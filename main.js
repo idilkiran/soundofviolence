@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import "./style.css";
 import { gsap } from "gsap";
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import globe from "./image/globe_1.jpeg"
+import sound from './sound/track_02.mp3'
 
 //Scene
 const scene = new THREE.Scene()
@@ -10,7 +12,7 @@ const scene = new THREE.Scene()
 const geometry = new THREE.SphereGeometry(4, 64, 64)
 const material = new THREE.MeshStandardMaterial({
     //color: "#00ff83",
-    map: new THREE.TextureLoader().load('./Image/globe_1.jpeg')
+    map: new THREE.TextureLoader().load(globe)
   })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
@@ -69,7 +71,7 @@ camera.add(listener)
 const audioLoader = new THREE.AudioLoader()
 
 const violence_sound = new THREE.Audio (listener)
-audioLoader.load('../sound/track_02.mp3', function(buffer) {
+audioLoader.load(sound, function(buffer) {
 violence_sound.setBuffer(buffer)
 violence_sound.setLoop(false)
 violence_sound.setVolume(0.1)
